@@ -1,3 +1,25 @@
 from django.db import models
 
 # Create your models here.
+SEX = [
+    ("M", "Masculino"),
+    ("F", "Femenino"),
+    ("O", "Otro"),
+]
+class Persona(models.Model):
+    rut=models.CharField(max_length=10,primary_key=True)
+    nombre=models.CharField(max_length=50, null=False)
+    apellido=models.CharField(max_length=50,null=False)
+    edad=models.IntegerField(null=False)
+    sexo=models.CharField(choices=SEX,max_length=1,null=False)
+
+    def __str__(self):
+        return f"{self.nombre} {self.apellido}"
+
+    
+    
+class Mascota(models.Model):
+    id=models.AutoField(primary_key=True)
+    tipo=models.CharField(max_length=25)
+    nombre=models.CharField(max_length=50)
+    propietario=models.ForeignKey(Persona,on_delete=models.PROTECT)
