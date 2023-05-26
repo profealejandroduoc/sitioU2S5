@@ -1,57 +1,17 @@
+{% extends 'aplicacion/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejemplo CRUD</title>
-    <!-- Latest compiled and minified CSS -->
-    <link href="{% static 'aplicacion/css/mistilo.css' %}" rel="stylesheet">
-    <link href="{% static 'aplicacion/css/bootstrap.min.css' %}" rel="stylesheet">
-    
-
-    <!-- Latest compiled JavaScript -->
-    <script src="{% static 'aplicacion/js/miscript.js' %}"></script>
-    <script src="{% static 'aplicacion/js/bootstrap.bundle.min.js' %}"></script>
-</head>
-
-<body>
-    <nav>
-        <button class="tablink" onclick="openPage('Home', this, 'red')">Home</button>
-        <button class="tablink" onclick="openPage('News', this, 'green')" id="defaultOpen">News</button>
-        <button class="tablink" onclick="openPage('Contact', this, 'blue')">Contact</button>
-        <button class="tablink" onclick="openPage('About', this, 'orange')">About</button>
-
-        <div id="Home" class="tabcontent">
-            <h3>Home</h3>
-            <p>Home is where the heart is..</p>
-        </div>
-
-        <div id="News" class="tabcontent">
-            <h3>News</h3>
-            <p>Some news this fine day!</p>
-        </div>
-
-        <div id="Contact" class="tabcontent">
-            <h3>Contact</h3>
-            <p>Get in touch, or swing by for a cup of coffee.</p>
-        </div>
-
-        <div id="About" class="tabcontent">
-            <h3>About</h3>
-            <p>Who we are and what we do.</p>
-        </div>
-    </nav>
 
 
-    <div class="container">
-        <h1>INDEX</h1>
-
+{% block contenido %}
+<div class="container">
+    <div class="mt-4 p-5 bg-light text-dark rounded">
+        <h1>Este es un ejemplo con Bootstrap y Django</h1>
+        <p>Esperemos que quede lindo...</p>
     </div>
-
-
-</body>
-
-</html>
+    <p class="m-5">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor odio numquam qui perspiciatis voluptate doloribus
+        iure cum architecto, facere dolorem repellendus reiciendis quisquam quae adipisci! Inventore qui tempora ullam
+        mollitia.
+    </p>
+</div>
+{% endblock contenido %}
