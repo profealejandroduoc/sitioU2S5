@@ -1,9 +1,9 @@
 #URLS.py aplicacion
 from django.contrib import admin
 from django.urls import path
-from .views import index, paginita
+from .views import index
 
 urlpatterns=[
     path('',index,name="index"),
-    path('paginita',paginita,name="paginita")
+
 ]
