@@ -46,3 +46,7 @@ html {
 #About {
     background-color: orange;
 }
+
+a {
+   text-decoration: none;
+}
