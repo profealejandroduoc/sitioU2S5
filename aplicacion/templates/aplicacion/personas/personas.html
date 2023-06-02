@@ -17,6 +17,7 @@
                     <th>APELLIDO</th>
                     <th>EDAD</th>
                     <th>SEXO</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,6 +29,7 @@
                     <td>{{per.apellido}}</td>
                     <td>{{per.edad}}</td>
                     <td>{{per.sexo}}</td>
+                    <td><a class="btn btn-primary" href="{% url 'editarpersona' per.rut  %}" role="button">Editar</a><td>
                 </tr>
                 {% endfor %}
 
