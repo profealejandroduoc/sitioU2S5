@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Persona, Mascota
+from .models import Persona, Mascota, Producto
 
 # Register your models here.
 class admPersona(admin.ModelAdmin):
@@ -17,5 +17,13 @@ class admMascota(admin.ModelAdmin):
     class meta:
         model=Mascota
 
+class admProducto(admin.ModelAdmin):
+    list_display=["id","descripcion","precio"]
+    list_editable=["descripcion","precio"]
+
+    class meta:
+        model=Producto
+
 admin.site.register(Persona,admPersona)
 admin.site.register(Mascota,admMascota)
+admin.site.register(Producto,admProducto)

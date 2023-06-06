@@ -29,7 +29,8 @@
                     <td>{{per.apellido}}</td>
                     <td>{{per.edad}}</td>
                     <td>{{per.sexo}}</td>
-                    <td><a class="btn btn-primary" href="{% url 'editarpersona' per.rut  %}" role="button">Editar</a><td>
+                    <td><a class="btn btn-warning text-light" href="{% url 'editarpersona' per.rut  %}" role="button">Editar</a>
+                    <a class="btn btn-danger" href="{% url 'eliminarpersona' per.rut  %}" role="button">Eliminar</a></tr> 
                 </tr>
                 {% endfor %}
 

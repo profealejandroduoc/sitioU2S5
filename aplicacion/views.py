@@ -63,6 +63,28 @@ def editarpersona(request,id):
 
     return render(request,"aplicacion/personas/editar.html",contexto)
 
+def eliminarpersona(request, id):
+    kill=Persona.objects.get(rut=id)
+
+    try:
+        pet=Mascota.objects.filter(propietario_id=kill.rut)
+       
+        
+    except:
+        print("***************ERROR***********************")
+        pet=None 
+   
+    contexto={
+        "persona":kill,
+        "pet":pet
+    }
+    if request.method=="POST":
+        kill=Persona.objects.get(rut=id)
+        
+        kill.delete()
+        return redirect(to="personas")      
+
+    return render(request,"aplicacion/personas/delete.html",contexto)
 
 def mascotas(request):
     pets=Mascota.objects.all()
