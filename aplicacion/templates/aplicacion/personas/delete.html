@@ -12,14 +12,15 @@
             <h3>Eliminar Registro</h3>
             <form action="" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                <div class="alert alert-warning">
+                
                     {% if not pet %}
+                    <div class="alert alert-danger">
                     <strong><h3>Está seguro de eliminar a {{persona}}</h3></strong> 
                     {% endif %}
 
                     {% if pet %}
                     <p>
-                
+                        <div class="alert alert-warning">
                        <h3> Esta persona ya posee una mascota {{pet.nombre}} elimine la mascota primero</h3>
                         </p>
                     {% endif %}
