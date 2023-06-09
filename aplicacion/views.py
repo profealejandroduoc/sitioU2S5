@@ -2,10 +2,12 @@ from django.shortcuts import get_object_or_404, render,redirect
 from datetime import date
 from .models import Persona,Mascota
 from .forms import formCrearMascota, formCrearPersona, formEditarPersona 
+from django.contrib.auth.decorators import login_required, permission_required
 
 def index(request):
     return render(request,'aplicacion/index.html')
 
+@permission_required('aplicacion.view_persona')
 def personas(request):
     fecha=date.today()
     autor="El profe"
@@ -18,6 +20,7 @@ def personas(request):
     }
     return render(request,'aplicacion/personas/personas.html',contexto)
 
+@permission_required('aplicacion.add_persona')
 def crearpersona(request):
     form=formCrearPersona(request.POST or None)
    

@@ -50,3 +50,7 @@ html {
 a {
    text-decoration: none;
 }
+
+.alinear-derecha{
+    float: right;
+}
