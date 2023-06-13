@@ -17,7 +17,9 @@
                     <th>APELLIDO</th>
                     <th>EDAD</th>
                     <th>SEXO</th>
+                    {% if perms.delete_persona %}
                     <th>Acciones</th>
+                    {% endif %}
                 </tr>
             </thead>
             <tbody>
@@ -29,8 +31,12 @@
                     <td>{{per.apellido}}</td>
                     <td>{{per.edad}}</td>
                     <td>{{per.sexo}}</td>
+
+
+                    {% if perms.delete_persona %}
                     <td><a class="btn btn-warning text-light" href="{% url 'editarpersona' per.rut  %}" role="button">Editar</a>
                     <a class="btn btn-danger" href="{% url 'eliminarpersona' per.rut  %}" role="button">Eliminar</a></tr> 
+                    {% endif %}
                 </tr>
                 {% endfor %}
 

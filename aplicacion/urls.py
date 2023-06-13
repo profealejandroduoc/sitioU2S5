@@ -1,7 +1,7 @@
 #URLS.py aplicacion
 from django.contrib import admin
 from django.urls import path
-from .views import editarpersona, index,personas, crearpersona,mascotas,crearmascota, eliminarpersona
+from .views import crearcuenta, editarpersona, index,personas, crearpersona,mascotas,crearmascota, eliminarpersona
 
 urlpatterns=[
     path('',index,name="index"),
@@ -11,5 +11,6 @@ urlpatterns=[
     path('crearmascota',crearmascota,name="crearmascota"),
     path('editarpersona/<id>',editarpersona,name="editarpersona"),
     path('eliminarpersona/<id>',eliminarpersona,name="eliminarpersona"),
+    path('crearcuenta',crearcuenta,name="crearcuenta"),
 
 ]

@@ -1,11 +1,26 @@
 from django.shortcuts import get_object_or_404, render,redirect
 from datetime import date
 from .models import Persona,Mascota
-from .forms import formCrearMascota, formCrearPersona, formEditarPersona 
+from .forms import formCrearMascota, formCrearPersona, formEditarPersona ,frmCrearUsuario
 from django.contrib.auth.decorators import login_required, permission_required
 
 def index(request):
+   
     return render(request,'aplicacion/index.html')
+
+def crearcuenta(request):
+    form=frmCrearUsuario()
+    contexto={
+        "form":form
+    }
+
+    if request.method=="POST":
+        form=frmCrearUsuario(data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(to="index")
+        
+    return render(request,"registration/crearcuenta.html",contexto)
 
 @permission_required('aplicacion.view_persona')
 def personas(request):
