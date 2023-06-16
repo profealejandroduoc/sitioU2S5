@@ -1,4 +1,14 @@
 from django.db import models
+from django.contrib.auth.models import User
+
+class Usuario(models.Model):
+    rut=models.CharField(primary_key=True,max_length=10)
+    usrdjango=models.OneToOneField(User,unique=True,on_delete=models.CASCADE)
+    direccion=models.CharField(max_length=250,null=False,default="calle falsa 123")
+
+
+
+
 
 # Create your models here.
 SEX = [

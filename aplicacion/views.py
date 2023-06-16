@@ -1,12 +1,45 @@
 from django.shortcuts import get_object_or_404, render,redirect
 from datetime import date
-from .models import Persona,Mascota
-from .forms import formCrearMascota, formCrearPersona, formEditarPersona ,frmCrearUsuario
+from .models import Persona,Mascota,Usuario
+from .forms import formCrearMascota, formCrearPersona, formEditarPersona ,frmCrearUsuario, frmUsuarioExtendido
 from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.models import User
 
 def index(request):
    
     return render(request,'aplicacion/index.html')
+
+def crearcuentaextendida(request):
+    formext=frmUsuarioExtendido()
+    formnormal=frmCrearUsuario()
+    contexto={
+        "formext":formext,
+        "formnormal":formnormal
+    }
+
+    if request.method=="POST":
+        formnormal=frmCrearUsuario(data=request.POST)
+        formext=frmUsuarioExtendido(data=request.POST)
+        if formnormal.is_valid() and formext.is_valid():
+            #GUARDAR USUARIO DE DJANGO AUTH
+            formnormal.save() #usuario django creado
+            datos_usr_django=formnormal.cleaned_data
+
+            #BUSCAR USUARIO CREADO EN TABLA DE DJANGO
+            usrdj=User.objects.get(username=datos_usr_django.get("username"))
+            #crear un objeto usuario con mi modelo
+            usr=Usuario()
+            #pasar lo datos del formulario a mi usuario personalizado
+            datos_ext=formext.cleaned_data
+            usr.rut=datos_ext.get("rut")
+            usr.direccion=datos_ext.get("direccion")
+            usr.usrdjango=usrdj
+            #guadar mi usuario en la tabla de mi aplicacion
+            usr.save()
+            return redirect(to="index")           
+            
+        
+    return render(request,"registration/cuentaextendida.html",contexto)
 
 def crearcuenta(request):
     form=frmCrearUsuario()

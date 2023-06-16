@@ -1,8 +1,13 @@
 from django import forms
-from .models import Mascota, Persona
+from .models import Mascota, Persona,Usuario
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
+
+class frmUsuarioExtendido(forms.ModelForm):
+    class Meta:
+        model=Usuario
+        fields=["rut","direccion"]
 
 class frmCrearUsuario(UserCreationForm):
     
